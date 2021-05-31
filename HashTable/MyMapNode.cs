@@ -66,7 +66,29 @@ namespace HashTable
 
         }
 
+        internal void Set(K key, V value) 
+        {
+            try
+            {
+                int position = GetArrayPosition(key);
+                var linkedList = GetLinkedList(position); 
+                KeyValue<K, V> temp = new KeyValue<K, V>();
+                foreach (KeyValue<K, V> item in linkedList)
+                {
+                    if (item.Key.Equals(key))
+                    {
+                        temp = item;
+                    }
+                }
+                temp.Value = value;
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
+
 
