@@ -88,7 +88,57 @@ namespace HashTable
                 Console.WriteLine(ex.Message);
             }
         }
+        public void Remove(K key)
+        {
+            try
+            {
+                int position = GetArrayPosition(key); 
+                LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position); 
+                bool itemFound = false;
+                KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+                foreach (KeyValue<K, V> item in linkedList) 
+                {
+                    if (item.Key.Equals(key)) 
+                    {
+                        itemFound = true; 
+                        foundItem = item;
+                    }
+                }
+                if (itemFound)
+                    linkedList.Remove(foundItem); 
+                Console.WriteLine($"Successfully Remove Key {key} ");
+                Display();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void Display() 
+        {
+            try
+            {
+                Console.WriteLine("Frequency of Word and Count");
+                foreach (var LinkedList in items) 
+                {
+                    if (LinkedList != null)
+                    {
+                        foreach (KeyValue<K, V> item in LinkedList) 
+                        {
+                            Console.WriteLine($"{item.Key}=> { item.Value}"); 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
+
 
 

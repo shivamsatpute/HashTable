@@ -53,6 +53,7 @@ namespace HashTable
             {
                 Console.WriteLine(ex.Message);
             }
+            hashtable.Remove("avoidable");
             Console.ReadLine();
         }
     }
